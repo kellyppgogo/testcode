@@ -3,7 +3,7 @@ Given a string containing digits from 2-9inclusive, return all possible letter c
 
 A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
 
-![phone pad](https://raw.githubusercontent.com/lulushen/SwiftNotes/master/image/1.png "sample")
+![phone pad](https://github.com/kellyppgogo/testcode/blob/master/src/main/resources/number.png "sample")
 
 Example:
 
