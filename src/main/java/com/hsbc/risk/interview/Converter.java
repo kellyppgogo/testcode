@@ -1,7 +1,11 @@
 package com.hsbc.risk.interview;
 
 import com.hsbc.risk.interview.service.ConvertionService;
+import com.hsbc.risk.interview.utils.CombineLetterUtil;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 
 /**
@@ -11,9 +15,19 @@ public class Converter {
 
     static ConvertionService convertionService;
 
-    public static void main(String[] args) {
-        convertionService = new ConvertionService(99l);
+    public static void main(String[] args) throws Exception {
+        System.out.println("Please input digits string for letter conversion... ");
+        BufferedReader bufReader = new BufferedReader(new InputStreamReader(System.in));
+        String inputStr = null;
+        try {
+            inputStr = bufReader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        convertionService = new ConvertionService(CombineLetterUtil.inputVerification(inputStr));
         List conversionResult = convertionService.getMappingResult();
         System.out.println(conversionResult);
     }
+
+
 }

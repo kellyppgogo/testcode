@@ -1,8 +1,8 @@
 package com.hsbc.risk.interview.service;
 
-import com.hsbc.risk.interview.utils.CombineLetterUtil;
-import com.hsbc.risk.interview.factory.digit.AbstractDigit;
 import com.hsbc.risk.interview.factory.DigitBeanFactory;
+import com.hsbc.risk.interview.factory.digit.AbstractDigit;
+import com.hsbc.risk.interview.utils.CombineLetterUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,16 +13,21 @@ import java.util.Stack;
  */
 public class ConvertionService {
 
-    List<AbstractDigit> digitList = new ArrayList<AbstractDigit>();
-    List<List<String>> letterMapList = new ArrayList<List<String>>();
+
+    List<List<String>> letterMapList;
+    List<AbstractDigit> digitList;
 
     public ConvertionService(Long... digits) {
+        digitList = new ArrayList<AbstractDigit>();
+        letterMapList = new ArrayList<List<String>>();
+
         for (Long digit : digits) {
             try {
                 if (digit != 0 && digit != 1) {
                     AbstractDigit instance = DigitBeanFactory.getDigitInstance(digit);
                     digitList.add(instance);
-                    letterMapList.add(instance.getLetterMapping());
+                    if (!instance.getLetterMapping().isEmpty() && instance.getLetterMapping().size() > 0)
+                        letterMapList.add(instance.getLetterMapping());
                 }
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -37,6 +42,7 @@ public class ConvertionService {
         CombineLetterUtil.backTrackingToGetCombineResult(letterMapList, stack, 0, mappingResult);
         return mappingResult;
     }
+
 
 
 }

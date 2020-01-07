@@ -1,5 +1,8 @@
 package com.hsbc.risk.interview.utils;
 
+import jdk.nashorn.internal.runtime.regexp.joni.MatcherFactory;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,6 +10,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import java.util.regex.Matcher;
 
 /**
  * Created by kellypan on 06/01/2020.
@@ -76,5 +80,61 @@ public class CombineLetterUtilTest {
         CombineLetterUtil.backTrackingToGetCombineResult(bigList, stack, 0, combinationList);
         System.out.println(combinationList);
         Assert.assertArrayEquals(expectedArray, combinationList.toArray());
+    }
+
+    @Test
+    public void testInputVerification() {
+        String inputStr = "1 2 45";
+        Long[] expected = new Long[] {1l,2l,45l};
+        try {
+            Long[] inputLong = CombineLetterUtil.inputVerification(inputStr);
+            Assert.assertArrayEquals(expected, inputLong);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testOutOfRangeInputVerification() {
+        String inputStr = "-1 2 45";
+        try {
+            Long[] inputLong = CombineLetterUtil.inputVerification(inputStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.assertThat(e.getMessage(), Matchers.containsString("Please input valid number:[0-99]"));
+        }
+    }
+
+    @Test
+    public void testOutOfRangeInputVerification2() {
+        String inputStr = "100";
+        try {
+            Long[] inputLong = CombineLetterUtil.inputVerification(inputStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.assertThat(e.getMessage(), Matchers.containsString("Please input valid number:[0-99]"));
+        }
+    }
+
+    @Test
+    public void testOutOfRangeInputVerification3() {
+        String inputStr = "100 2 #$ hel";
+        try {
+            Long[] inputLong = CombineLetterUtil.inputVerification(inputStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.assertThat(e.getMessage(), Matchers.containsString("Please input valid number:[0-99]"));
+        }
+    }
+
+    @Test
+    public void testEmptyInputVerification3() {
+        String inputStr = "";
+        try {
+            Long[] inputLong = CombineLetterUtil.inputVerification(inputStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.assertThat(e.getMessage(), Matchers.containsString("Your input is empty."));
+        }
     }
 }
