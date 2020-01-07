@@ -16,7 +16,7 @@ public class Converter {
     static ConvertionService convertionService;
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Please input digits string for letter conversion... ");
+        System.out.println("Please input digits string for letter conversion, use blank space between individual digit... ");
         BufferedReader bufReader = new BufferedReader(new InputStreamReader(System.in));
         String inputStr = null;
         try {
@@ -24,7 +24,7 @@ public class Converter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        convertionService = new ConvertionService(CombineLetterUtil.inputVerification(inputStr));
+        convertionService = new ConvertionService(CombineLetterUtil.verifyInput(inputStr));
         List conversionResult = convertionService.getMappingResult();
         System.out.println(conversionResult);
     }

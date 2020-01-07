@@ -33,7 +33,7 @@ public class CombineLetterUtil {
     }
 
 
-    public static Long[] inputVerification(String str) throws Exception {
+    public static Long[] verifyInput(String str) throws Exception {
 
         Pattern pattern = Pattern.compile("^[0-9]{1,2}$");
 

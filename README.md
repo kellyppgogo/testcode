@@ -15,7 +15,8 @@ Note: Although the above answer is in lexicographical order, your answer could b
 # HOW TO USE
 1. **Application Entrance: /Users/kellypan/git/digitstoletters/src/main/java/com/hsbc/risk/interview/Converter.java**
 2. **Run the main method, the application will prompt with "Please input digits string for letter conversion..."**
-3. **Key in valid number from *0-99***
+3. **Key in valid number from *0-99*, number split with blank space.**
+    e.g. "1 2 3 99"
 
 ## EXCEPTION HANDLING
 1. if invalid number is input, the app will throw exception with "Please input valid number:[0-99]"

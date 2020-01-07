@@ -83,11 +83,11 @@ public class CombineLetterUtilTest {
     }
 
     @Test
-    public void testInputVerification() {
+    public void testverifyInput() {
         String inputStr = "1 2 45";
         Long[] expected = new Long[] {1l,2l,45l};
         try {
-            Long[] inputLong = CombineLetterUtil.inputVerification(inputStr);
+            Long[] inputLong = CombineLetterUtil.verifyInput(inputStr);
             Assert.assertArrayEquals(expected, inputLong);
         } catch (Exception e) {
             e.printStackTrace();
@@ -95,10 +95,10 @@ public class CombineLetterUtilTest {
     }
 
     @Test
-    public void testOutOfRangeInputVerification() {
+    public void testOutOfRangeverifyInput() {
         String inputStr = "-1 2 45";
         try {
-            Long[] inputLong = CombineLetterUtil.inputVerification(inputStr);
+            Long[] inputLong = CombineLetterUtil.verifyInput(inputStr);
         } catch (Exception e) {
             e.printStackTrace();
             Assert.assertThat(e.getMessage(), Matchers.containsString("Please input valid number:[0-99]"));
@@ -106,10 +106,10 @@ public class CombineLetterUtilTest {
     }
 
     @Test
-    public void testOutOfRangeInputVerification2() {
+    public void testOutOfRangeverifyInput2() {
         String inputStr = "100";
         try {
-            Long[] inputLong = CombineLetterUtil.inputVerification(inputStr);
+            Long[] inputLong = CombineLetterUtil.verifyInput(inputStr);
         } catch (Exception e) {
             e.printStackTrace();
             Assert.assertThat(e.getMessage(), Matchers.containsString("Please input valid number:[0-99]"));
@@ -117,10 +117,10 @@ public class CombineLetterUtilTest {
     }
 
     @Test
-    public void testOutOfRangeInputVerification3() {
+    public void testOutOfRangeverifyInput3() {
         String inputStr = "100 2 #$ hel";
         try {
-            Long[] inputLong = CombineLetterUtil.inputVerification(inputStr);
+            Long[] inputLong = CombineLetterUtil.verifyInput(inputStr);
         } catch (Exception e) {
             e.printStackTrace();
             Assert.assertThat(e.getMessage(), Matchers.containsString("Please input valid number:[0-99]"));
@@ -128,10 +128,10 @@ public class CombineLetterUtilTest {
     }
 
     @Test
-    public void testEmptyInputVerification3() {
+    public void testEmptyverifyInput3() {
         String inputStr = "";
         try {
-            Long[] inputLong = CombineLetterUtil.inputVerification(inputStr);
+            Long[] inputLong = CombineLetterUtil.verifyInput(inputStr);
         } catch (Exception e) {
             e.printStackTrace();
             Assert.assertThat(e.getMessage(), Matchers.containsString("Your input is empty."));

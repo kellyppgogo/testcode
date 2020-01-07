@@ -10,14 +10,11 @@ import com.hsbc.risk.interview.factory.digit.SingleDigit;
 public class DigitBeanFactory {
 
     public static AbstractDigit getDigitInstance(long digit) throws Exception {
-        if (digit < 0) {
-            throw new Exception("digit should be a positive number");
-        }
-        if (digit < 10) {
+        if (digit > 0 && digit < 10) {
             return new SingleDigit(digit);
         }
 
-        if (digit < 100) {
+        if (digit >= 10 && digit < 100) {
             return new DoubleDigit(digit);
         }
 

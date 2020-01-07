@@ -46,7 +46,7 @@ public class DigitBeanFactoryTest {
         try {
             AbstractDigit digitInstance = DigitBeanFactory.getDigitInstance(-2l);
         } catch (Exception e) {
-            Assert.assertThat(e.getMessage(), Matchers.containsString("digit should be a positive number"));
+            Assert.assertThat(e.getMessage(), Matchers.containsString("-2 is out of support range. Support range: [0-99]"));
         }
     }
 }

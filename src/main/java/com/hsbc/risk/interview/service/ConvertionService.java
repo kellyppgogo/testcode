@@ -15,20 +15,21 @@ public class ConvertionService {
 
 
     List<List<String>> letterMapList;
-    List<AbstractDigit> digitList;
 
     public ConvertionService(Long... digits) {
-        digitList = new ArrayList<AbstractDigit>();
         letterMapList = new ArrayList<List<String>>();
 
         for (Long digit : digits) {
             try {
-                if (digit != 0 && digit != 1) {
-                    AbstractDigit instance = DigitBeanFactory.getDigitInstance(digit);
-                    digitList.add(instance);
-                    if (!instance.getLetterMapping().isEmpty() && instance.getLetterMapping().size() > 0)
-                        letterMapList.add(instance.getLetterMapping());
+                if (digit == 0 || digit == 1) {
+                    continue;
                 }
+
+                AbstractDigit instance = DigitBeanFactory.getDigitInstance(digit);
+                List letterMapping = instance.getLetterMapping();
+                if (!letterMapping.isEmpty())
+                    letterMapList.add(letterMapping);
+
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
